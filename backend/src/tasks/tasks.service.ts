@@ -23,10 +23,15 @@ export class TasksService {
   }
 
   async create(createTaskDto: CreateTaskDto): Promise<Task> {
-    const task = this.taskRepository.create(createTaskDto);
-    task.priorityScore = this.calculatePriority(task.difficulty, task.progress, task.deadline);
-    return this.taskRepository.save(task);
+  const task = this.taskRepository.create(createTaskDto);
+  
+  if (task.progress === undefined || task.progress === null || isNaN(task.progress)) {
+    task.progress = 0;
   }
+
+  task.priorityScore = this.calculatePriority(task.difficulty, task.progress, task.deadline);
+  return this.taskRepository.save(task);
+}
 
   async findAll(status: string): Promise<Task[]> {
     const isCompleted = status === 'completed';
