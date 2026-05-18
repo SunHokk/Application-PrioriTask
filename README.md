@@ -1,4 +1,5 @@
 # Backend PrioriTask — Dokumentasi Lengkap
+<img width="1492" height="1154" alt="Logo PrioriTask (1)" src="https://github.com/user-attachments/assets/d59ea0dc-75c6-4a8d-b5cf-4ecd07640084" />
 
 ## Gambaran Umum
 
