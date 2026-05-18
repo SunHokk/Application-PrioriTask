@@ -1,6 +1,7 @@
 # Backend PrioriTask — Dokumentasi Lengkap
-<img width="1492" height="1154" alt="Logo PrioriTask (1)" src="https://github.com/user-attachments/assets/d59ea0dc-75c6-4a8d-b5cf-4ecd07640084" />
-
+<p align="center">
+     <img width="400" alt="Logo PrioriTask (1)" src="https://github.com/user-attachments/assets/d59ea0dc-75c6-4a8d-b5cf-4ecd07640084" />
+</p>
 ## Gambaran Umum
 
 Backend PrioriTask dibangun menggunakan **NestJS** (framework Node.js berbasis TypeScript) dan **Supabase** (PostgreSQL as a Service) sebagai database. Backend bertugas sebagai jembatan antara aplikasi Flutter dan database, sekaligus menjalankan logika bisnis utama seperti kalkulasi skor prioritas tugas dan pengelolaan notifikasi deadline.
