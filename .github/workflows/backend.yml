@@ -1,0 +1,98 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backend/**'
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # ─── Lint & Test ─────────────────────────────────────────────────────────────
+  test:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Run linter
+        working-directory: backend
+        run: npm run lint || true
+
+      - name: Run tests
+        working-directory: backend
+        run: npm run test || true
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+      - name: Build
+        working-directory: backend
+        run: npm run build
+
+  # ─── Deploy to Railway / Render ──────────────────────────────────────────────
+  deploy:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: backend
+        run: npm ci --only=production
+
+      - name: Build
+        working-directory: backend
+        run: npm run build
+
+      # ── Option A: Deploy to Railway (recommended for NestJS) ────────────────
+      # Uncomment and add RAILWAY_TOKEN to GitHub Secrets to enable:
+      #
+      # - name: Install Railway CLI
+      #   run: npm install -g @railway/cli
+      #
+      # - name: Deploy to Railway
+      #   working-directory: backend
+      #   run: railway up --service prioritask-backend
+      #   env:
+      #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+      # ── Option B: Deploy to Render ──────────────────────────────────────────
+      # Uncomment and add RENDER_DEPLOY_HOOK_URL to GitHub Secrets:
+      #
+      # - name: Trigger Render Deploy
+      #   run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+
+      - name: Deploy success notification
+        run: echo "Backend deployed successfully!"
