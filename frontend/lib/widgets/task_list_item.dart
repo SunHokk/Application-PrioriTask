@@ -19,7 +19,6 @@ class TaskListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final diffColor = _difficultyColor(task.difficulty);
-    final days = task.daysUntilDeadline;
 
     return Dismissible(
       key: Key(task.id),
