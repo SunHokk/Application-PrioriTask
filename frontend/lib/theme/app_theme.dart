@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF4A90E2);
-  static const Color primaryLight = Color(0xFF74B3FF);
-  static const Color primaryDark = Color(0xFF1A5FA8);
-  static const Color accent = Color(0xFF00C896);
+
+  static const Color primary = Color(0xFF5B78C4);
+  static const Color primaryLight = Color(0xFF8FA5E0);
+  static const Color primaryDark = Color(0xFF3D5BA8);
+
+  static const Color gold = Color(0xFFC9A030);
+  static const Color goldLight = Color(0xFFFAF0D0);
+
   static const Color accentOrange = Color(0xFFFF7043);
   static const Color accentPurple = Color(0xFF7C4DFF);
-  static const Color background = Color(0xFFF5F7FA);
+
+  static const Color background = Color(0xFFF3F0E8);
   static const Color surface = Color(0xFFFFFFFF);
   static const Color cardBg = Color(0xFFFFFFFF);
+
   static const Color textPrimary = Color(0xFF1A2340);
   static const Color textSecondary = Color(0xFF6B7A99);
   static const Color textHint = Color(0xFFADB5C7);
-  static const Color divider = Color(0xFFEEF0F5);
+  static const Color divider = Color(0xFFEDE9DE);
+  
   static const Color urgent = Color(0xFFFF4757);
   static const Color warning = Color(0xFFFFB300);
   static const Color success = Color(0xFF00C896);
   static const Color easy = Color(0xFF00C896);
   static const Color medium = Color(0xFFFFB300);
   static const Color hard = Color(0xFFFF4757);
+
   static const Color navBarBg = Color(0xFFFFFFFF);
-  static const Color shadow = Color(0x1A4A90E2);
+  static const Color shadow = Color(0x1A5B78C4);
 }
 
 class AppTheme {
@@ -99,7 +107,7 @@ class AppTheme {
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.navBarBg,
-          selectedItemColor: AppColors.primary,
+          selectedItemColor: AppColors.gold,
           unselectedItemColor: AppColors.textHint,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,

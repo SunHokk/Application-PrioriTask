@@ -33,7 +33,7 @@ class _MainShellState extends State<MainShell> {
       floatingActionButton: _currentIndex == 0 || _currentIndex == 1
           ? FloatingActionButton(
               onPressed: () => _openAddTask(context),
-              backgroundColor: AppColors.primary,
+              backgroundColor: AppColors.gold,
               elevation: 4,
               shape: const CircleBorder(),
               child: const Icon(Icons.add, color: Colors.white, size: 28),
