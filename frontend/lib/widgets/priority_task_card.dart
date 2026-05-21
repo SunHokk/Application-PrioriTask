@@ -130,7 +130,7 @@ class PriorityTaskCard extends StatelessWidget {
                     lineHeight: 8,
                     percent: task.progressPercent / 100,
                     backgroundColor: Colors.white.withOpacity(0.2),
-                    progressColor: Colors.white,
+                    progressColor: AppColors.gold,
                     barRadius: const Radius.circular(4),
                     animation: true,
                   ),

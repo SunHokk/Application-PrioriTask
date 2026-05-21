@@ -190,7 +190,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen>
                   value: task.priorityScore != null
                       ? task.priorityScore!.toStringAsFixed(1)
                       : '-',
-                  color: AppColors.accentPurple,
+                  color: AppColors.primary,
                 ),
               ),
             ],
@@ -282,7 +282,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen>
                 style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
-                  color: AppColors.primary,
+                  color: AppColors.gold,
                 ),
               ),
             ],
@@ -292,7 +292,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen>
             min: 0,
             max: 100,
             divisions: 20,
-            activeColor: AppColors.primary,
+            activeColor: AppColors.gold,
             inactiveColor: AppColors.divider,
             onChanged: (val) => setState(() => _progress = val),
           ),

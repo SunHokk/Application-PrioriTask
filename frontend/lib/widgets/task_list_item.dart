@@ -178,7 +178,7 @@ class TaskListItem extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: AppColors.accentPurple.withOpacity(0.1),
+                        color: AppColors.gold.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -186,7 +186,7 @@ class TaskListItem extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w800,
-                          color: AppColors.accentPurple,
+                          color: AppColors.gold,
                         ),
                       ),
                     ),
